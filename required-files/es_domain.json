@@ -1,0 +1,39 @@
+{
+    "DomainName": "YOUR_ES_DOMAIN_NAME",
+    "EngineVersion": "OpenSearch_2.7",
+    "ClusterConfig": {
+        "InstanceType": "m4.large.search",
+        "InstanceCount": 1,
+            "DedicatedMasterEnabled": false,
+            "ZoneAwarenessEnabled": false,
+            "WarmEnabled": false
+        },
+    "EBSOptions": {
+        "EBSEnabled": true,
+        "VolumeType": "gp2",
+        "VolumeSize": 20
+    },
+    "AccessPolicies":  "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"*\"},\"Action\":\"es:ESHttp*\",\"Resource\":\"arn:aws:es:YOUR_AWS_REGION:YOUR_ACCOUNT_ID:domain/YOUR_ES_DOMAIN_NAME/*\"}]}",
+    "SnapshotOptions": {},
+    "CognitoOptions": {
+        "Enabled": false
+    },
+    "EncryptionAtRestOptions": {
+        "Enabled": true
+    },
+    "NodeToNodeEncryptionOptions": {
+        "Enabled": true
+    },
+    "DomainEndpointOptions": {
+        "EnforceHTTPS": true,
+        "TLSSecurityPolicy": "Policy-Min-TLS-1-0-2019-07"
+    },
+    "AdvancedSecurityOptions": {
+        "Enabled": true,
+        "InternalUserDatabaseEnabled": true,
+        "MasterUserOptions": {
+            "MasterUserName": "YOUR_ES_DOMAIN_USER",
+            "MasterUserPassword": "YOUR_ES_DOMAIN_PASSWORD"
+        }
+    }
+}
